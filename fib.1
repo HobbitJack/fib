@@ -1,0 +1,67 @@
+.TH FIB "1" "January 2026" "fib v4.0.0" "User Commands"
+.SH NAME
+fib \- compute Fibonacci numbers
+.SH SYNOPSIS
+.SY
+.B fib
+[\fI\,OPTION\/\fR]... [\fI\,TARGET\/\fR]...
+.br
+.B fib
+\fB\-m\fR [\fI\,OPTION\/\fR]... [\fI\,TARGET\/\fR]...
+.YS
+.SH DESCRIPTION
+.B fib
+is a Fibonacci number calculator.
+Using binary expoentiation, it computes the \fITARGET\fRth Fibonacci number in O(log(N)), or when using the \fB\-p\fR flag it wil use the naive O(N) computation.
+With the \fB\-m\fR flag it computes the largest Fibonacci number less than \fITARGET\fR, also using the O(N) computation.
+\fITARGET\fR[s] are read from the command line, unless none are provided, in which case they are read from standard input.
+This program defines the sequence such that F(0)=0, F(1)=1, F(2)=1, F(3)=2, and so on.
+.SH OPTIONS
+Mandatory options to long options are mandatory for short options too.
+.TP
+\fB\-b\fR, \fB\-\-base\fR=\fI\,BASE\/\fR
+Output numbers in base \fIBASE\fR.
+.I BASE
+may be any base supported by GNU MP.
+.br
+\- Bases [2, 36] use integers, then lower-case letters.
+.br
+\- Bases [-2, -36] use integers, then upper-case letters.
+.br
+\- Bases [37, 62] use integers, upper-case letters, then lower-case letters.
+.br
+Invalid bases will cause a fatal error.
+.TP
+\fB\-l\fR, \fB\-\-loose\-exit\fR
+Change the behavior of the exit status.
+Normally, the program will exit non-zero if any invalid input is provided.
+This flag will change the behavior such that the program will only exit non-zero if a fatal error is encountered.
+.TP
+\fB\-m\fR, \fB\-\-max\-value\fR
+Print largest Fibbonaci number less than \fITARGET\fR.
+This always uses the slower, naive O(N) algorithm.
+.TP
+\fB\-p\fR, \fB\-\-print\-all\fR
+Print the whole Fibonacci sequence up to \fITARGET\fR.
+This always uses the slower, naive O(N) algorithm.
+.TP
+\fB\-q\fR, \fB\-\-quiet\fR
+Supress all error messages.
+.TP
+\fB\-h\fR, \fB\-\-help\fR
+Print a short help message and exit.
+.TP
+\fB\-v\fR, \fB\-\-version\fR
+Print version information and exit.
+.PP
+.SH AUTHOR
+Written by Jack R. Uteg.
+.SH COPYRIGHT
+Copyright \(co 2025 Jack Renton Uteg.
+License GPLv3+: GNU GPL version 3 or later <https://gnu.org/licenses/gpl.html>.
+.br
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+.SH SEE ALSO
+.TP
+\fBcollatz(1)\fR, \fBfactor(1)\fR
