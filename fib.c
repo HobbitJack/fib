@@ -27,7 +27,7 @@ fib_maxv(mpz_t target)
 		mpz_set(a, b);
 		mpz_set(b, p);
 		
-		if (args.print_all_flag || (mpz_cmp(target, p) <= 0))
+		if (args.print_all_flag || (mpz_cmp(target, p) < 0))
 		{
 			mpz_out_str(NULL, args.base_arg, a);
 			putchar('\n');
