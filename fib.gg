@@ -1,0 +1,16 @@
+args	"-F fib -c gg.c -H gg.h -uTARGET --func-name ggo --show-required"
+
+package "fib"
+version "4.0.0"
+
+description	"Print the TARGETth Fibonacci number."
+
+section "Options"
+option	"base" b "Output in base BASE, [-32, -2] or [2, 62]" int typestr="BASE" default="10" optional
+option	"loose-exit-status" l "Exit with 0 even if invalid input encountered" flag off
+option	"max-value" m "Print largest Fibonacci number less than TARGET" flag off
+option	"print-all" p "Print all Fibonacci numbers up to result" flag off
+option	"quiet" q "Don't print error messages" flag off
+text	"\nTry 'man fib' for more information."
+
+versiontext	"Copyright (C) 2025 Jack Renton Uteg.\nLicense GPLv3+: GNU GPL version 3 or later <https://gnu.org/licenses/gpl.html>.\nThis is free software: you are free to change and redistribute it.\nThere is NO WARRANTY, to the extent permitted by law.\n\nWritten by Jack R. Uteg."
