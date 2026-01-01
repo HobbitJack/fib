@@ -8,7 +8,8 @@ fib.l.c fib.l.h:	fib.l
 
 fib.gg.c fib.gg.h:	fib.gg
 	gengetopt <fib.gg
-
+	sed -E 's/(\\n)?[[:blank:]]+\(default=.*\)//' <fib.gg.c | sponge fib.gg.c
+	
 .PHONY: clean
 clean:
 	rm -f fib fib.gg.? fib.l.?
