@@ -124,6 +124,17 @@ main(int argc, char *argv[])
 	if (ggo(argc, argv, &args))
 		return 1;
 
+	if (args.help_given)
+	{
+		ggo_print_help();
+		return 0;
+	}
+	if (args.version_given)
+	{
+		ggo_print_version();
+		return 0;
+	}
+	
 	if (args.inputs_num)
 	{
 		for (i=0; i<args.inputs_num; i++)
