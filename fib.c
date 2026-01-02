@@ -4,7 +4,7 @@
 
 #include <gmp.h>
 
-#include "fib.go.h"
+#include "fib.g.h"
 #include "fib.l.h"
 
 static char *progname;
