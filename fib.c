@@ -42,17 +42,14 @@ fib_maxv(mpz_t target)
 void
 fib_iter(mpz_t target)
 {
-	mpz_t a, b, p;
+	mpz_t a, b, p, q, tmp;
 	
-	mpz_inits(a, b, p, NULL);
+	mpz_inits(a, b, p, q, tmp, NULL);
 		
 	if (args.print_all_flag)
 	{
-		mpz_t i;
-		mpz_init(i);
-
 		mpz_set_ui(a, 1);		
-		for (mpz_add_ui(target, target, 1); mpz_cmp(target, i); mpz_add_ui(i, i, 1))
+		for (mpz_add_ui(target, target, 1); mpz_cmp(target, tmp); mpz_add_ui(tmp, tmp, 1))
 		{
 			mpz_add(p, a, b);
 			mpz_set(a, b);
@@ -66,10 +63,7 @@ fib_iter(mpz_t target)
 		}
 	}
 	else
-	{
-		mpz_t q, tmp;
-		
-		mpz_inits(q, tmp, NULL);
+	{		
 		mpz_set_ui(b, 1);
 		mpz_set_ui(q, 1);
 
@@ -173,7 +167,7 @@ main(int argc, char *argv[])
 				continue;
 			}
 
-			if (!args.quiet_flag)
+			if (!args.quiet_flag && !args.print_all_flag)
 			{
 				mpz_out_str(NULL, 10, target);
 				fputs(": ", stdout);
