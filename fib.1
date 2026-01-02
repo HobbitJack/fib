@@ -1,4 +1,4 @@
-.TH FIB "1" "January 2026" "fib v4.0.0" "User Commands"
+.TH FIB "1" "January 2026" "fib v4.1.0" "User Commands"
 .SH NAME
 fib \- compute Fibonacci numbers
 .SH SYNOPSIS
@@ -16,6 +16,8 @@ Using binary expoentiation, it computes the \fITARGET\fRth Fibonacci number in O
 With the \fB\-m\fR flag it computes the largest Fibonacci number less than \fITARGET\fR, also using the O(N) computation.
 \fITARGET\fR[s] are read from the command line, unless none are provided, in which case they are read from standard input.
 This program defines the sequence such that F(0)=0, F(1)=1, F(2)=1, F(3)=2, and so on.
+.br
+Output is given as 'TARGET: F(TARGET)\n'.
 .SH OPTIONS
 Mandatory options to long options are mandatory for short options too.
 .TP
@@ -46,6 +48,10 @@ Print the whole Fibonacci sequence up to \fITARGET\fR.
 This always uses the slower, naive O(N) algorithm.
 .TP
 \fB\-q\fR, \fB\-\-quiet\fR
+Disable the printing of \fITARGET\fR with the computed number.
+This is probably more useful for scripts, but really probably is never going to be used.
+.TP
+\fB\-s\fR, \fB\-\-silent\fR
 Supress all error messages.
 .TP
 \fB\-h\fR, \fB\-\-help\fR

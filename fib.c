@@ -4,7 +4,7 @@
 
 #include <gmp.h>
 
-#include "fib.gg.h"
+#include "fib.go.h"
 #include "fib.l.h"
 
 static char *progname;
@@ -115,7 +115,7 @@ fib_iter(mpz_t target)
 int
 main(int argc, char *argv[])
 {
-	int i;
+	unsigned int i;
 	mpz_t target;
 	
 	progname = basename(argv[0]);
@@ -141,13 +141,18 @@ main(int argc, char *argv[])
 		{
 			if (mpz_set_str(target, args.inputs[i], 0) || (mpz_cmp_d(target, 0) < 0))
 			{
-				if (!args.quiet_flag)
+				if (!args.silent_flag)
 					fprintf(stderr, "%s: %s: Bad argument\n", progname, args.inputs[i]);
 
 				status = 1;
 				continue;
 			}
 
+			if (!args.quiet_flag)
+			{
+				mpz_out_str(NULL, 10, target);
+				fputs(": ", stdout);
+			}
 			if (args.max_value_flag)
 				fib_maxv(target);
 			else
@@ -160,7 +165,7 @@ main(int argc, char *argv[])
 		{
 			if ((errno < 0) || mpz_set_str(target, yytext, 0) || (mpz_cmp_d(target, 0) < 0))
 			{
-				if (!args.quiet_flag)
+				if (!args.silent_flag)
 					fprintf(stderr, "%s: %s: Bad argument\n", progname, yytext);
 
 				errno = 0;
@@ -168,6 +173,11 @@ main(int argc, char *argv[])
 				continue;
 			}
 
+			if (!args.quiet_flag)
+			{
+				mpz_out_str(NULL, 10, target);
+				fputs(": ", stdout);
+			}
 			if (args.max_value_flag)
 				fib_maxv(target);
 			else

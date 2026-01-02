@@ -1,7 +1,7 @@
-args	"-F fib -c gg.c -H gg.h -uTARGET --func-name ggo --show-required --default-optional --no-help --no-version"
+args	"-F fib -c go.c -H go.h -uTARGET --func-name ggo --show-required --default-optional --no-help --no-version"
 
 package "fib"
-version "4.0.0"
+version "4.1.0"
 
 description	"Print the TARGETth Fibonacci number.\nIf no TARGET, read from standard input."
 
@@ -10,7 +10,8 @@ option	"base" b "Output in base BASE, [-32, -2] or [2, 62]" int typestr="BASE" d
 option	"loose-exit-status" l "Exit with 0 even if invalid input encountered" flag off
 option	"max-value" m "Print largest Fibonacci number less than TARGET" flag off
 option	"print-all" p "Print all Fibonacci numbers up to result" flag off
-option	"quiet" q "Don't print error messages" flag off
+option	"quiet" q "Don't print TARGET before output" flag off
+option	"silent" s "Don't print error messages" flag off
 section	"Getting help"
 option	"help" h "Print this help message and exit"
 option	"version" v "Print version information and exit"
