@@ -1,4 +1,4 @@
-args	"-F fib -c g.c -H g.h -uTARGET --func-name ggo --show-required --default-optional --no-help --no-version"
+args	"-F fib -c g.c -H g.h -uTARGET --func-name ggo --show-required --default-optional --no-help --no-version -G"
 
 package "fib"
 version "4.1.0"
