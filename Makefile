@@ -1,5 +1,5 @@
 MAKEFLAGS = '-r'
-PREFIX ?= '/usr/local/'
+PREFIX ?= /usr/local
 
 fib:	fib.c fib.go.c fib.go.h fib.l.c fib.l.h
 	cc -lgmp -o $@ fib.c fib.go.c fib.l.c
