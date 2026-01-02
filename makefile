@@ -1,5 +1,10 @@
-MAKEFLAGS = '-r'
-PREFIX ?= /usr/local
+.POSIX:	
+.PHONY:	all clean install release source uninstall
+.SUFFIXES:
+
+PREFIX 	?= /usr/local
+
+all:	fib
 
 fib:	fib.c fib.g.c fib.g.h fib.l.c fib.l.h
 	cc -lgmp -o $@ fib.c fib.g.c fib.l.c
@@ -11,8 +16,7 @@ fib.g.c fib.g.h:	fib.g
 	gengetopt <fib.g
 	sed -E 's/(\\n)?[[:blank:]]+\(default=.*\)//' <fib.g.c >fib.g.c.tmp
 	mv -f fib.g.c.tmp fib.g.c
-	
-.PHONY:	clean source release install uninstall
+
 clean:
 	rm -f fib fib.g.? fib.l.? fib*.tar.gz fib.1.gz
 
