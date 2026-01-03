@@ -3,7 +3,7 @@
 .SUFFIXES:
 
 PREFIX 	?= /usr/local
-CFLAGS	= -ansi
+CFLAGS	?= -std=17
 
 all:	fib
 
