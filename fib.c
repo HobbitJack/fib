@@ -1,3 +1,5 @@
+#define _POSIX_C_SOURCE 202405L
+
 #include <libgen.h>
 #include <stdio.h>
 #include <unistd.h>
@@ -18,7 +20,7 @@ fib_maxv(mpz_t target)
 	mpz_t a, b, p;
 
 	mpz_inits(a, b, p, NULL);
-	// Cheeky hack. But this does what we want.
+	/* Cheeky hack. But this does what we want. */
 	mpz_set_ui(a, 1);
 	
 	while (mpz_cmp(target, p) >= 0)

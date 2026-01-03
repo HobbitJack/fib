@@ -3,11 +3,12 @@
 .SUFFIXES:
 
 PREFIX 	?= /usr/local
+CFLAGS	= -ansi
 
 all:	fib
 
 fib:	fib.c fib.g.c fib.g.h fib.l.c fib.l.h
-	cc -lgmp -o $@ fib.c fib.g.c fib.l.c
+	cc $(CFLAGS) -lgmp -o $@ fib.c fib.g.c fib.l.c
 
 fib.l.c fib.l.h:	fib.l
 	lex -o fib.l.c fib.l
