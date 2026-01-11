@@ -3,15 +3,14 @@
 .SUFFIXES:
 
 PREFIX 	?= /usr/local
-CFLAGS	?= -std=17
 
 all:	fib
 
 fib:	fib.c fib.g.c fib.g.h fib.l.c fib.l.h
-	cc $(CFLAGS) -lgmp -o $@ fib.c fib.g.c fib.l.c
+	cc -std=c17 -lgmp -o $@ fib.c fib.g.c fib.l.c
 
 fib.l.c fib.l.h:	fib.l
-	lex -o fib.l.c fib.l
+	lex -D_POSIX_C_SOURCE=202405L -o fib.l.c fib.l
 
 fib.g.c fib.g.h:	fib.g
 	gengetopt <fib.g
@@ -23,12 +22,12 @@ clean:
 
 source:
 	rm -f fib_source.tar.gz
-	tar -cf fib_source.tar fib.c fib.g fib.l fib.1 Makefile
+	tar -cf fib_source.tar fib.c fib.g fib.l fib.1 makefile
 	gzip fib_source.tar
 
 release:	fib
 	rm -f fib.tar.gz
-	tar -cf fib.tar fib fib.c fib.g fib.l fib.1 Makefile
+	tar -cf fib.tar fib fib.c fib.g fib.l fib.1 makefile
 	gzip fib.tar
 
 install:	fib
