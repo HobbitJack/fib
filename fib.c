@@ -29,7 +29,7 @@ fib_maxv(mpz_t target)
 		mpz_set(a, b);
 		mpz_set(b, p);
 		
-		if (args.print_all_flag || (mpz_cmp(target, p) < 0))
+		if (args.print_all_given || (mpz_cmp(target, p) < 0))
 		{
 			mpz_out_str(NULL, args.base_arg, a);
 			putchar('\n');
@@ -48,7 +48,7 @@ fib_iter(mpz_t target)
 	
 	mpz_inits(a, b, p, q, tmp, NULL);
 		
-	if (args.print_all_flag)
+	if (args.print_all_given)
 	{
 		mpz_set_ui(a, 1);		
 		for (mpz_add_ui(target, target, 1); mpz_cmp(target, tmp); mpz_add_ui(tmp, tmp, 1))
@@ -57,7 +57,7 @@ fib_iter(mpz_t target)
 			mpz_set(a, b);
 			mpz_set(b, p);
 		
-			if (args.print_all_flag || (mpz_cmp(target, p) <= 0))
+			if (args.print_all_given || (mpz_cmp(target, p) <= 0))
 			{
 				mpz_out_str(NULL, args.base_arg, a);
 				putchar('\n');
@@ -137,19 +137,19 @@ main(int argc, char *argv[])
 		{
 			if (mpz_set_str(target, args.inputs[i], 0) || (mpz_cmp_d(target, 0) < 0))
 			{
-				if (!args.silent_flag)
+				if (!args.silent_given)
 					fprintf(stderr, "%s: %s: Bad argument\n", progname, args.inputs[i]);
 
 				status = 1;
 				continue;
 			}
 
-			if (!args.quiet_flag)
+			if (!args.quiet_given)
 			{
 				mpz_out_str(NULL, 10, target);
 				fputs(": ", stdout);
 			}
-			if (args.max_value_flag)
+			if (args.max_value_given)
 				fib_maxv(target);
 			else
 				fib_iter(target);
@@ -161,7 +161,7 @@ main(int argc, char *argv[])
 		{
 			if ((errno < 0) || mpz_set_str(target, yytext, 0) || (mpz_cmp_d(target, 0) < 0))
 			{
-				if (!args.silent_flag)
+				if (!args.silent_given)
 					fprintf(stderr, "%s: %s: Bad argument\n", progname, yytext);
 
 				errno = 0;
@@ -169,17 +169,17 @@ main(int argc, char *argv[])
 				continue;
 			}
 
-			if (!args.quiet_flag && !args.print_all_flag)
+			if (!args.quiet_given && !args.print_all_given)
 			{
 				mpz_out_str(NULL, 10, target);
 				fputs(": ", stdout);
 			}
-			if (args.max_value_flag)
+			if (args.max_value_given)
 				fib_maxv(target);
 			else
 				fib_iter(target);
 		}
 	}
 
-	return args.loose_exit_status_flag ? 0 : status;
+	return args.loose_exit_status_given ? 0 : status;
 }

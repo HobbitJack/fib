@@ -18,7 +18,7 @@ fib.g.c fib.g.h:	fib.g
 	mv -f fib.g.c.tmp fib.g.c
 
 clean:
-	rm -f fib fib.g.? fib.l.? fib*.tar.gz fib.1.gz
+	rm -f fib fib.g.? fib.l.? fib*.tar.gz fib.1.gz Makefile
 
 source:
 	rm -f fib_source.tar.gz
@@ -27,7 +27,8 @@ source:
 
 release:	fib
 	rm -f fib.tar.gz
-	tar -cf fib.tar fib fib.c fib.g fib.l fib.1 makefile
+	sed 6,33d makefile | sed '2c .PHONY:	install uninstall'> Makefile
+	tar -cf fib.tar fib fib.c fib.g fib.l fib.1 Makefile
 	gzip fib.tar
 
 install:	fib
