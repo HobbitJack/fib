@@ -7,10 +7,10 @@ PREFIX 	?= /usr/local
 all:	fib
 
 fib:	fib.c fib.g.c fib.g.h fib.l.c fib.l.h
-	cc -std=c17 -lgmp -o $@ fib.c fib.g.c fib.l.c
+	c99 -lgmp -o $@ fib.c fib.g.c fib.l.c
 
 fib.l.c fib.l.h:	fib.l
-	lex -D_POSIX_C_SOURCE=202405L -o fib.l.c fib.l
+	lex -D_POSIX_C_SOURCE=200809L -o fib.l.c fib.l
 
 fib.g.c fib.g.h:	fib.g
 	gengetopt <fib.g
