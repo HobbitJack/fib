@@ -31,7 +31,7 @@ fib_maxv(mpz_t target)
 		
 		if (args.print_all_given || (mpz_cmp(target, p) < 0))
 		{
-			mpz_out_str(NULL, args.base_arg, a);
+			mpz_out_str(NULL, 10, a);
 			putchar('\n');
 		}
 	}
@@ -59,7 +59,7 @@ fib_iter(mpz_t target)
 		
 			if (args.print_all_given || (mpz_cmp(target, p) <= 0))
 			{
-				mpz_out_str(NULL, args.base_arg, a);
+				mpz_out_str(NULL, 10, a);
 				putchar('\n');
 			}
 		}
@@ -100,7 +100,7 @@ fib_iter(mpz_t target)
 			}
 		}
 
-		mpz_out_str(NULL, args.base_arg, a);
+		mpz_out_str(NULL, 10, a);
 		putchar('\n');
 		mpz_clears(q, tmp, NULL);
 	}

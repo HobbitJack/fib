@@ -1,4 +1,4 @@
-.TH FIB "1" "January 2026" "fib v4.1.1" "User Commands"
+.TH FIB "1" "January 2026" "fib v5.0.0" "User Commands"
 .SH NAME
 fib \- compute Fibonacci numbers
 .SH SYNOPSIS
@@ -21,19 +21,6 @@ Output is given as 'TARGET: F(TARGET)\\n'.
 If no \fITARGET\fRs are specified on the command line, read them from standard input.
 .SH OPTIONS
 Mandatory options to long options are mandatory for short options too.
-.TP
-\fB\-b\fR, \fB\-\-base\fR=\fI\,BASE\/\fR
-Output numbers in base \fIBASE\fR.
-.I BASE
-may be any base supported by GNU MP.
-.br
-\- Bases [2, 36] use integers, then lower-case letters.
-.br
-\- Bases [-2, -36] use integers, then upper-case letters.
-.br
-\- Bases [37, 62] use integers, upper-case letters, then lower-case letters.
-.br
-Invalid bases will cause a fatal error.
 .TP
 \fB\-l\fR, \fB\-\-loose\-exit\fR
 Change the behavior of the exit status.
