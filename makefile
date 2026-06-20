@@ -22,13 +22,13 @@ clean:
 
 source:
 	rm -f fib_source.tar.gz
-	tar -cf fib_source.tar fib.c fib.g fib.l fib.1 makefile
+	tar -cf fib_source.tar fib.c fib.g fib.l fib.1 makefile COPYING
 	gzip fib_source.tar
 
 release:	fib
 	rm -f fib.tar.gz
 	sed 6,33d makefile | sed '2c .PHONY:	install uninstall'> Makefile
-	tar -cf fib.tar fib fib.c fib.g fib.l fib.1 Makefile
+	tar -cf fib.tar fib fib.c fib.g fib.l fib.1 Makefile COPYING
 	gzip fib.tar
 
 install:	fib
